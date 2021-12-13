@@ -1,0 +1,53 @@
+/*layout elements*/
+
+.content {
+  background-color: purple;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 600px;
+}
+
+.card {
+  height: auto;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 10px;
+  text-align: left;
+  margin: 10px 10px;
+  background-color: #15172b;
+  cursor: pointer;
+  position: relative;
+  top: 0px;
+  left: 0px;
+  border-radius: 20px;
+  box-shadow: 1px 1px 5px 0px rgba(82, 82, 82, 0.75);
+  transition: all 150ms ease-in-out;
+}
+
+.clickable:hover {
+	top: -3px;
+  box-shadow: 3px 3px 15px 0px rgba(82, 82, 82, 0.85);
+}
+.clickable:active {
+	top: 2px;
+	left: 2px;
+	box-shadow: inset 0 0 10px rgba(82, 82, 82, 0.85);
+}
+
+
+.flex {
+  display: inline-flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100%;
+  padding: 10px;
+}
+
+.flex:vertical {
+  flex-direction:row;
+}
+
+.code {
+  outline: purple;
+}

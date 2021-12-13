@@ -1,0 +1,14 @@
+.Typography {
+    display: flex;
+    width: 100%;
+    align-items: stretch;
+    justify-content: space-between;
+}
+
+#fi {
+    font-size: large;
+}
+
+#en {
+    font-size: large;
+}

@@ -1,0 +1,14 @@
+.UL {
+    display: inline-block;
+    text-align: left;
+    align-content: flex-start;
+}
+
+.Unclicked {
+    color: black;
+}
+
+.Clicked {
+    text-decoration: line-through;
+    color: darkgray;
+}
