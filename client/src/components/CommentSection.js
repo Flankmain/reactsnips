@@ -6,20 +6,18 @@ import Comment from './Comment';
 
 function CommentSection(props) {
 
-    const [comments, setComments] = useState();
+    const [ids, setIds] = useState();
 
     useEffect(() => {
-        fetch(`/post/comments/${props.id}`)
+        fetch(`/post/comment-ids/${props.id}`)
         .then(response => response.json())
-        .then(data => setComments(data));
+        .then(data => setIds(data));
     }, []);
 
-    function commentFormat (items) {
-        if (comments){
-            console.log(items);
-            
-            return items.map((contents) =>
-                <Comment contents={contents}/>
+    function listify (items) {
+        if (ids) {
+            return items.map((id) =>
+                <Comment id={id}/>
             );
         }
     } 
@@ -29,7 +27,7 @@ function CommentSection(props) {
             <CommentForm id={props.id}/>
             <h2> Comments </h2>
             <div className='flex'>
-                {commentFormat(comments)}
+                {listify(ids)}
             </div>
         </div>
     );

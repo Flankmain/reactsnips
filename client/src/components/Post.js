@@ -25,7 +25,7 @@ function Post(props) {
     return (
         <Link to={`/posts/${props.id}`} className="card clickable">
             <h4> {contents.title} </h4>
-            <h6> Posted by {contents.poster} </h6>
+            <h6> {contents.poster} @ {contents.time}</h6>
             <FormattedCode code={contents.text}/>
         </Link>
     );

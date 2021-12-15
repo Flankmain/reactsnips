@@ -13,18 +13,10 @@ function MyAppBar(props) {
 
             <Typography className='Typography' variant="h6" color="inherit" component="div">
 
-                <Link to="/">Home</Link>
-                <Link to="/posts">All posts</Link>
-                <Link to="/">All comments</Link>
-                <Link to="/about">About</Link>
-
+                <Link to="/posts">Posts</Link>
                 <Link to="/login">Login</Link>
                 <Link to="/register">register</Link>
-
-                {/*
-                <Button id='fi' onClick={()=> console.log('fi')}>FI</Button>
-                <Button id='en' onClick= {()=> console.log('en')}>EN</Button>
-                */}
+                
             </Typography>
 
             </Toolbar>

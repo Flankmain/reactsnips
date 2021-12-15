@@ -26,8 +26,6 @@ router.post(
     (req, res, next) => {
         const errors = validationResult(req);
 
-        console.log("email:", req.body.email)
-
         if (!errors.isEmpty()) {
             return res.status(400).json({
                 message: 'Bad mojo.',

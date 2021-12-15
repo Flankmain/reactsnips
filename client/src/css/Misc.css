@@ -1,7 +1,6 @@
 /*layout elements*/
 
 .content {
-  background-color: purple;
   display: flex;
   flex-direction: column;
   justify-content: center;

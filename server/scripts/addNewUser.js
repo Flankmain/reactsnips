@@ -3,8 +3,6 @@ const bcrypt = require('bcryptjs');
 
 module.exports = async (req, res, next) => {
     
-    console.log(`ADDING USER: [email: ${req.body.email}, password: ${req.body.password}]`);
-    
     User.findOne({$or: [{email:req.body.email}, {name:req.body.name}]}, (err, user) => { 
     
         if (err) {

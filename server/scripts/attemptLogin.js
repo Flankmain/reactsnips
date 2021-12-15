@@ -19,37 +19,25 @@ module.exports = async (req, res) => {
     }
 
 
-    if (!req.body.email) {
-        console.log("no email given")
+    if (!req.body.email)
         return badCredentials();
-    }
 
     User.findOne({$or: [{email:req.body.email}, {name:req.body.email}]}, (err, user) =>
     {    
         if (err)
             return internalError();
         
-        if (!user) {
-            console.log("no user found")
+        if (!user)
             return badCredentials();
-        }
-
 
         //password validation
         bcrypt.compare(req.body.password, user.passwordHash, (err, passwordMatch) => {
             
             //unsuccessful login handling
             if (err)
-            {
-                console.log("bcrypt comparison error: ", err);
                 return internalError();
-            }
             else if (!passwordMatch)
-            {
-                console.log("Password mismatch.");
                 return badCredentials();
-            }
-            else { console.log("Matching passwords."); }
 
             //token creation
             const token = jwt.sign(

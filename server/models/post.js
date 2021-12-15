@@ -39,29 +39,24 @@ const postSchema = new Schema(
             default: function() {
                 return !this.isPost;
             }
-        },
-
-        reduced: {
-            type: Object,
-            default: function() {
-                
-                return {
-                    title:  this.title,
-                    poster: true ? "[DELETED]" : posterUser.name,
-                    text:   this.text,
-                    time:   (this.updatedAt ? this.updatedAt : this.createdAt) 
-                }
-                
-                User.findById(this.under, (err, posterUser) => {
-
-                    if (err) console.log(err);
-
-                    
-                });
-            }
         }
 
     }, { timestamps: true }
 );
+
+
+
+postSchema.methods.simplify = async function () {
+
+    const user = await User.findById(this.poster);
+
+    return {
+        title:  this.title,
+        text:   this.text,
+        time:   (this.updatedAt  ? this.updatedAt : this.createdAt).toLocaleString("fi-FI"), 
+        poster: user.name       ? user.name : "[DELETED USER]"
+    }
+}
+
 
 module.exports = mongoose.model('post', postSchema);

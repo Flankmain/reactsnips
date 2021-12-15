@@ -17,8 +17,7 @@ function PostPage() {
     useEffect(() => {
         fetch(`/post/${params.id}`)
         .then(response => response.json())
-        .then((data) => {
-            console.log(data);    
+        .then((data) => {   
             setContents(data);
         });
     }, []);

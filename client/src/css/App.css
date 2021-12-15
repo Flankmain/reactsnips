@@ -1,3 +1,9 @@
+.ROOT {
+  background-color: #000f29;
+  color: white;
+  min-height: 100vh;
+}
+
 .App {
   text-align: center;
   align-items: center;
@@ -28,3 +34,4 @@ a {
   color: white;
   text-decoration: none;
 }
+

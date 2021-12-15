@@ -49,9 +49,6 @@ router.get('/ids', (req, res) => {
 //make new top-level post
 router.post('/', validateToken, async (req, res) => {
 
-    //console.log('POST INFORMATION:')
-    //console.log('user:',req.user, '\ntitle:',req.body.title, '\ntext:',req.body.text);
-
     const createParams = {
         poster: req.user.id,
         title: req.body.title,
@@ -64,24 +61,17 @@ router.post('/', validateToken, async (req, res) => {
         const createdPost = await Post.create(createParams);
         res.redirect(`posts/${createdPost.id}`)
     } catch (err) {
-        console.log("ERROR IN CREATING POST");
         console.log(err);
     }
 });
 
 
 
-//get top level post by id
-router.get('/:postID', (req, res) => {
-
-    Post.findOne({_id: req.params.postID})
-        .exec((err, post) => {
-            
-            if (err)
-                res.status(404).json('Post not found.');
-
-            res.status(200).json(post.reduced);
-    });
+//get a post or comment by id
+router.get('/:postID', async (req, res) => {
+    const target = await Post.findById(req.params.postID);
+    const simple = await target.simplify();
+    return res.status(200).json(simple);
 });
 
 //post a comment to post by ID
@@ -101,55 +91,24 @@ router.post('/:postID', validateToken, (req, res) => {
             
             Post.create(createParams);
 
-            console.log("new comment:")
-            console.log(createParams);
-
-            return res.status(200).json({success: true, message: 'Comment created.'});
+            return res.redirect('back');
     });
 });
 
-router.get('/comments/:postID', (req, res) => {
+router.get('/comment-ids/:postID', (req, res) => {
 
     Post.find({under: req.params.postID})
         .exec((err, comments) => {
 
-            if (err || !comments){
-                console.log("!COMMENTS");
+            if (err || !comments)
                 return res.status(404).json({success: false, message: 'Comments not found.'});
-            }
-
-            console.log("COMMENTS");
 
             const returnArr = comments.map((item) => {
-                return item.reduced;
+                return item._id;
             });
 
             return res.status(200).json(returnArr);
     });
 });
-
-
-//comment under postID
-/*
-router.post('/:postID', validateToken, async (req, res) => {  
-    
-    console.log("Request reached.");
-
-    const under = req.body.postID ? req.body.postID : null;
-    const createParams = {
-        title: req.body.title,
-        text:  req.body.text,
-        under: under,
-        poster: req.user
-    };
-
-    const createdPost = await Post.create(createParams);
-
-    if (createdPost.isPost)
-        res.redirect('/comments');
-    else
-        res.redirect(f`/${createdPost.postID}`)
-});
-*/
 
 module.exports = router;
