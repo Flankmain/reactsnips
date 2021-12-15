@@ -5,16 +5,16 @@
 
 I built this simple code snippet forum with a server and front-end for a university web development course.
 
-## This project, as it stands, doesn't take into account the following:
+## This project may lack in some of the following aspects:
 * ease of deployment
 * ease of use
-* express or react conventions
+* conventions of `Express` and `React`.
 
 ## A non-exhaustive list of easy future source code improvements:
-* many functions in the back-end could be extracted to reduce code repetetiveness.
+* A lot of code in the back-end could be extracted into functions to reduce code repetetiveness.
 * using props to make a more sensible general-use form component
 * build a database abstraction layer to make code less verbose
-* improved mongoose schemas, possibly even gaining performance
+* improved mongoose schemas and queries, possibly even gaining performance
 
 #
 ## **Technology rundown**
@@ -22,16 +22,16 @@ I built this simple code snippet forum with a server and front-end for a univers
 ### The following things had to be used because of the assignment:
 * `Node.js`
 * `React`
-* Any pre-existing database technology. (I chose `Mongoose`)
+* Any pre-existing database technology. (I chose `MongoDB` with `Mongoose`)
 
 ## choices
 I chose technologies based mainly on what was taught on the course.
 
-`Express`.js and `Mongoose`, for instance, were chosen because the course largely teaches those things already and I had a bunch of useful source code from previous weekly exercises.
+`Express` and `Mongoose` were chosen because the course largely teaches those things already and I had a bunch of useful source code from previous weekly exercises.
 
 `React` was chosen because I decided that using vanilla `JavaScript` and `pug` would lead to very ugly and verbose code. Additionally, I already had experience from the university's `React` code camp.
 
-Any non-mandatory packages that I actually understand decently well have descriptions in the dependencies section.
+Any packages that I understand decently well have descriptions in the dependencies section.
 
 #
 ## **Dependencies**
@@ -44,8 +44,14 @@ Mandatory or practically mandatory:
 * `react-router-dom`
 
 I chose these:
-* `@mui/material` offers some quick and easy css-like styling for the app bar I chose to use.
-* `react-syntax-highlighter` is very easy to use and is made for use with React.
+* `@mui/material`
+    * offers some quick and easy `css`-like styling for the app bar I chose to use.
+    * Could easily be removed in favor of some easy custom `css`.
+* `react-syntax-highlighter`
+    * Is made for use with `React`.
+    * Very easy to use
+    * Support for multiple languages allows for better extensibility.
+    
 
 #
 
@@ -58,7 +64,7 @@ I chose these:
 #
 
 ### Test dependencies
-* **No tests exist yet except for example tests.**
+* **No tests exist yet except for example tests from the course's materials.**
 
 #
 ## **Installation instructions**
@@ -84,7 +90,7 @@ npm i
 npm run dev
 ```
 
-5. **If this doesn't work cd to client and server and run** ```npm i``` **separately.**
+5. **If this doesn't work cd to client and server and run** ```npm i``` **in both folders.**
 
 ## List of included custom npm scripts
 
